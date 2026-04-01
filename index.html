@@ -238,6 +238,27 @@ body {
     background: var(--green-light); padding: 4px 12px; border-radius: 20px;
     margin-left: 8px;
 }
+
+/* View Mode Toggle */
+.view-mode-toggle {
+    display: flex; gap: 4px; margin-bottom: 16px;
+}
+.view-mode-btn {
+    font-size: 12px; padding: 6px 14px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--card);
+    color: var(--text-primary); cursor: pointer;
+    transition: all .15s;
+}
+.view-mode-btn:hover { background: var(--bg); }
+.view-mode-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Kanban View */
+.kanban-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kanban-col { background: var(--bg); border-radius: var(--radius); padding: 16px; }
+.kanban-col-header { font-size: 13px; font-weight: 600; padding: 8px 0; margin-bottom: 12px; border-bottom: 2px solid var(--border); }
+.kanban-card { background: var(--card); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 10px; box-shadow: var(--shadow); border-left: 3px solid #ccc; }
+.kanban-card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.kanban-card-meta { font-size: 11px; color: var(--text-secondary); }
 </style>
 </head>
 <body>
@@ -271,8 +292,17 @@ body {
         <button class="tab" data-view="cost" onclick="switchTab(this)">成本分析</button>
     </div>
 
+    <!-- View Mode Toggle for Progress -->
+    <div class="view-mode-toggle" id="viewModeToggle" style="display:none;">
+        <button class="view-mode-btn active" onclick="switchProgressView('cards')">卡片视图</button>
+        <button class="view-mode-btn" onclick="switchProgressView('kanban')">看板视图</button>
+        <button class="view-mode-btn" onclick="switchProgressView('table')">表格视图</button>
+    </div>
+
     <!-- Progress View -->
     <div id="progressView"></div>
+    <div id="progressKanban" class="view-hidden"></div>
+    <div id="progressTable" class="view-hidden"></div>
 
     <!-- Cost View -->
     <div id="costView" class="view-hidden"></div>
@@ -741,13 +771,19 @@ function renderCharts(teams) {
     const teamEntries = Object.entries(teams);
     if (teamEntries.length === 0) { document.getElementById('chartSection').innerHTML = ''; return; }
 
-    const teamStats = teamEntries.map(([name, eps], i) => {
+    let teamStats = teamEntries.map(([name, eps]) => {
         const epArr = Object.values(eps);
         const totalTasks = epArr.reduce((s, d) => s + d.total, 0);
         const doneTasks = epArr.reduce((s, d) => s + d.done, 0);
         const pct = totalTasks > 0 ? Math.round(doneTasks / totalTasks * 100) : 0;
-        return { name, totalTasks, doneTasks, pct, color: TEAM_COLORS[i % TEAM_COLORS.length] };
+        return { name, totalTasks, doneTasks, pct };
     });
+
+    // 按完成度倒序排列
+    teamStats.sort((a, b) => b.pct - a.pct);
+    
+    // 排序后分配颜色
+    teamStats = teamStats.map((t, i) => ({ ...t, color: TEAM_COLORS[i % TEAM_COLORS.length] }));
 
     const grandTotal = teamStats.reduce((s, t) => s + t.totalTasks, 0);
     const grandDone = teamStats.reduce((s, t) => s + t.doneTasks, 0);
@@ -826,6 +862,7 @@ function openFeishuModal() {
     if (saved.url) document.getElementById('feishuUrl').value = saved.url;
     if (saved.proxy) document.getElementById('feishuProxy').value = saved.proxy;
     if (saved.appId) document.getElementById('feishuAppId').value = saved.appId;
+    if (saved.appSecret) document.getElementById('feishuAppSecret').value = saved.appSecret;
     
     // 显示上次同步时间
     const lastSync = localStorage.getItem('feishuLastSync');
@@ -901,7 +938,7 @@ async function syncFeishu() {
         return;
     }
 
-    localStorage.setItem('feishuConfig', JSON.stringify({ url: feishuUrl, proxy: proxyUrl, appId }));
+    localStorage.setItem('feishuConfig', JSON.stringify({ url: feishuUrl, proxy: proxyUrl, appId, appSecret }));}
 
     const btn = document.getElementById('btnSync');
     const uploadBtn = document.getElementById('btnUpload');
