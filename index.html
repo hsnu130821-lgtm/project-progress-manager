@@ -54,7 +54,8 @@ body {
 .topbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .topbar-btn {
     font-size: 13px; font-weight: 500;
-    padding: 7px 16px; border-radius: 20px;
+    padding: 7px 16px;
+    border-radius: 20px;
     border: 1px solid var(--border); background: var(--card);
     color: var(--text-primary); cursor: pointer;
     transition: all .15s;
@@ -62,59 +63,34 @@ body {
 .topbar-btn:hover { background: var(--bg); }
 .topbar-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .topbar-btn.primary:hover { opacity: .88; }
+.topbar-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* Layout */
 .page { max-width: 1360px; margin: 0 auto; padding: 24px 32px 60px; }
 
 /* Summary Row */
-.summary-row {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-    margin-bottom: 24px;
-}
-.summary-card {
-    background: var(--card); border-radius: var(--radius);
-    padding: 20px 22px; box-shadow: var(--shadow);
-}
+.summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.summary-card { background: var(--card); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
 .summary-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
 .summary-value { font-size: 28px; font-weight: 700; letter-spacing: -.5px; }
 .summary-sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 
 /* Tabs */
-.tabs {
-    display: flex; gap: 4px; margin-bottom: 24px;
-    background: var(--card); border-radius: var(--radius);
-    padding: 4px; box-shadow: var(--shadow); width: fit-content;
-}
-.tab {
-    padding: 8px 20px; border-radius: var(--radius-sm);
-    font-size: 13px; font-weight: 500; cursor: pointer;
-    color: var(--text-secondary); transition: all .15s; border: none; background: none;
-}
+.tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--card); border-radius: var(--radius); padding: 4px; box-shadow: var(--shadow); width: fit-content; }
+.tab { padding: 8px 20px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text-secondary); transition: all .15s; border: none; background: none; }
 .tab.active { background: var(--accent); color: #fff; }
 .tab:hover:not(.active) { color: var(--text-primary); }
 
 /* Team Sections */
 .team-section { margin-bottom: 32px; }
-.team-title-row {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 14px;
-}
+.team-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .team-dot { width: 10px; height: 10px; border-radius: 50%; }
 .team-label { font-size: 15px; font-weight: 600; }
 .team-meta { font-size: 12px; color: var(--text-secondary); }
 
 /* Episode Grid */
-.ep-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-}
-.ep-card {
-    background: var(--card); border-radius: var(--radius);
-    padding: 18px 20px; box-shadow: var(--shadow);
-    transition: box-shadow .2s, transform .2s;
-    cursor: default;
-}
+.ep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.ep-card { background: var(--card); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s; cursor: default; }
 .ep-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
 
 .ep-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
@@ -128,9 +104,7 @@ body {
 .bar-fill.high { background: var(--green); }
 
 .ep-stages { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.stage-tag {
-    font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
-}
+.stage-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
 .tag-pending { background: #f0f0f5; color: var(--gray); }
 .tag-wip { background: var(--accent-light); color: var(--accent); }
 .tag-review { background: var(--orange-light); color: var(--orange); }
@@ -139,20 +113,11 @@ body {
 .tag-archived { background: var(--purple-light); color: var(--purple); }
 
 .ep-footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-secondary); }
-.ep-predict {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 11px; font-weight: 500; color: var(--accent);
-    background: var(--accent-light); padding: 3px 10px; border-radius: 20px;
-}
+.ep-predict { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 3px 10px; border-radius: 20px; }
 
 /* Cost Section */
-.cost-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px;
-}
-.cost-card {
-    background: var(--card); border-radius: var(--radius);
-    padding: 20px 22px; box-shadow: var(--shadow);
-}
+.cost-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.cost-card { background: var(--card); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
 .cost-title { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
 .cost-amount { font-size: 24px; font-weight: 700; letter-spacing: -.5px; }
 .cost-note { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
@@ -166,19 +131,15 @@ body {
 }
 .modal-overlay.show { opacity: 1; pointer-events: auto; }
 
-.modal {
-    background: var(--card); border-radius: 16px;
-    padding: 32px; width: 520px; max-width: 92vw;
-    box-shadow: 0 20px 60px rgba(0,0,0,.2);
-    transform: translateY(10px); transition: transform .2s;
-}
+.modal { background: var(--card); border-radius: 16px; padding: 32px; width: 520px; max-width: 92vw; box-shadow: 0 20px 60px rgba(0,0,0,.2); transform: translateY(10px); transition: transform .2s; }
 .modal-overlay.show .modal { transform: translateY(0); }
 
 .modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
 
 .drop-zone {
     border: 2px dashed var(--border); border-radius: var(--radius);
-    padding: 32px; text-align: center; cursor: pointer;
+    padding: 32px; text-align: center;
+    cursor: pointer;
     transition: all .15s; margin-bottom: 16px;
 }
 .drop-zone:hover { border-color: var(--accent); background: var(--accent-light); }
@@ -202,49 +163,37 @@ body {
 .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
     background: var(--text-primary); color: #fff;
-    padding: 10px 24px; border-radius: 20px;
+    padding: 10px 24px;
+    border-radius: 20px;
     font-size: 13px; font-weight: 500;
     box-shadow: 0 4px 12px rgba(0,0,0,.2);
-    opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 300;
+    opacity: 0; transition: opacity .2s; pointer-events: none;
+    z-index: 300;
 }
 .toast.show { opacity: 1; }
 
 /* Template download area */
 .template-area {
     margin-top: 12px; padding: 12px 16px;
-    background: var(--bg); border-radius: var(--radius-sm);
+    background: var(--bg);
+    border-radius: var(--radius-sm);
     font-size: 12px; color: var(--text-secondary);
 }
 .template-area a {
-    color: var(--accent); text-decoration: none; font-weight: 500; cursor: pointer;
+    color: var(--accent); text-decoration: none;
+    font-weight: 500; cursor: pointer;
 }
 .template-area a:hover { text-decoration: underline; }
 
 /* Chart Section */
-.chart-section {
-    display: flex; gap: 24px; margin-bottom: 28px;
-    flex-wrap: wrap;
-}
-.chart-card {
-    background: var(--card); border-radius: var(--radius);
-    padding: 24px; box-shadow: var(--shadow);
-    flex: 1; min-width: 280px;
-}
+.chart-section { display: flex; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+.chart-card { background: var(--card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); flex: 1; min-width: 280px; }
 .chart-card-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 18px; text-transform: uppercase; letter-spacing: .5px; }
 .chart-body { display: flex; align-items: center; gap: 28px; }
 .donut-wrap { position: relative; width: 160px; height: 160px; flex-shrink: 0; }
-.donut {
-    width: 100%; height: 100%; border-radius: 50%;
-    position: relative;
-}
-.donut::after {
-    content: ''; position: absolute; inset: 30%; border-radius: 50%;
-    background: var(--card);
-}
-.donut-center {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; z-index: 1;
-}
+.donut { width: 100%; height: 100%; border-radius: 50%; position: relative; }
+.donut::after { content: ''; position: absolute; inset: 30%; border-radius: 50%; background: var(--card); }
+.donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; }
 .donut-center-value { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
 .donut-center-label { font-size: 11px; color: var(--text-secondary); }
 .chart-legend { display: flex; flex-direction: column; gap: 10px; flex: 1; }
@@ -261,7 +210,8 @@ body {
 .form-input {
     font-size: 14px; padding: 10px 14px; border-radius: var(--radius-sm);
     border: 1px solid var(--border); background: var(--bg);
-    color: var(--text-primary); outline: none; transition: border-color .15s;
+    color: var(--text-primary);
+    outline: none; transition: border-color .15s;
     font-family: inherit;
 }
 .form-input:focus { border-color: var(--accent); }
@@ -282,7 +232,8 @@ body {
 
 /* Feishu badge */
 .feishu-badge {
-    display: inline-flex; align-items: center; gap: 5px;
+    display: inline-flex;
+    align-items: center; gap: 5px;
     font-size: 11px; font-weight: 500; color: var(--green);
     background: var(--green-light); padding: 4px 12px; border-radius: 20px;
     margin-left: 8px;
@@ -298,10 +249,10 @@ body {
         <span class="feishu-badge" id="feishuBadge" style="display:none">飞书已连接</span>
     </div>
     <div class="topbar-actions">
-        <button class="topbar-btn" onclick="openFeishuModal()" id="btnFeishu">飞书同步</button>
+        <button class="topbar-btn" onclick="openFeishuModal()" id="btnFeishu" title="从飞书同步数据">飞书同步</button>
         <button class="topbar-btn" onclick="downloadTemplate('progress')">下载进度模板</button>
         <button class="topbar-btn" onclick="downloadTemplate('salary')">下载薪资模板</button>
-        <button class="topbar-btn primary" onclick="openModal()">上传数据</button>
+        <button class="topbar-btn primary" onclick="openModal()" id="btnUpload">上传数据</button>
         <button class="topbar-btn" onclick="exportCSV()">导出报告</button>
     </div>
 </div>
@@ -363,25 +314,33 @@ body {
 <div class="modal-overlay" id="feishuOverlay" onclick="if(event.target===this)closeFeishuModal()">
     <div class="modal">
         <div class="modal-title">飞书多维表格同步</div>
+
         <div class="feishu-form">
             <div class="form-group">
                 <label class="form-label">飞书表格 URL</label>
-                <input class="form-input" id="feishuUrl" placeholder="https://xxx.feishu.cn/base/xxx?table=xxx&view=xxx" value="https://ecn0yywspbrw.feishu.cn/base/JtZhbHBcKa9rotsCzrec3GPbnNf?table=tblsFtKCRpr3U7Xl&view=vewM1Y9Vem">
+                <input class="form-input" id="feishuUrl"
+                    placeholder="https://xxx.feishu.cn/base/xxx?table=xxx&view=xxx"
+                    value="https://ecn0yywspbrw.feishu.cn/base/JtZhbHBcKa9rotsCzrec3GPbnNf?table=tblsFtKCRpr3U7Xl&view=vewM1Y9Vem">
                 <div class="form-hint">粘贴飞书多维表格链接，自动解析 app_token / table_id / view_id</div>
             </div>
             <div class="form-group">
                 <label class="form-label">CORS 代理地址</label>
-                <input class="form-input" id="feishuProxy" placeholder="https://your-worker.workers.dev">
+                <input class="form-input" id="feishuProxy"
+                    placeholder="https://your-worker.workers.dev"
+                    value="https://broken-sea-7f0f.hsnu130821.workers.dev">
                 <div class="form-hint">部署 Cloudflare Worker 后填入地址（见下方说明）</div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label class="form-label">App ID</label>
-                    <input class="form-input" id="feishuAppId" placeholder="cli_xxxxxxxxxx">
+                    <input class="form-input" id="feishuAppId"
+                        placeholder="cli_xxxxxxxxxx"
+                        value="cli_a942538896b81cd2">
                 </div>
                 <div class="form-group">
                     <label class="form-label">App Secret</label>
-                    <input class="form-input" id="feishuAppSecret" type="password" placeholder="xxxxxxxxxxxxxxxx">
+                    <input class="form-input" id="feishuAppSecret"
+                        type="password" placeholder="xxxxxxxxxxxxxxxx">
                 </div>
             </div>
             <div class="template-area">
@@ -495,7 +454,6 @@ function predict(d) {
 // ── Render ──
 function render() {
     const { teams, totalEps, avgPct, totalStages, doneStages, teamCount } = process();
-
     document.getElementById('feishuBadge').style.display = isFeishuConnected ? '' : 'none';
 
     // Empty state
@@ -558,7 +516,6 @@ function render() {
         const color = TEAM_COLORS[ti % TEAM_COLORS.length];
         const epEntries = Object.entries(eps);
         const teamAvg = Math.round(epEntries.reduce((s, [, d]) => s + d.pct, 0) / epEntries.length);
-
         html += `<div class="team-section">
             <div class="team-title-row">
                 <div class="team-dot" style="background:${color}"></div>
@@ -758,7 +715,8 @@ function toast(msg) {
     el.textContent = msg;
     el.classList.add('show');
     if (toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { el.classList.remove('show'); toastTimer = null; }, 2500);
+    toastTimer = setTimeout(() => {
+        el.classList.remove('show'); toastTimer = null; }, 2500);
 }
 
 // ── Drag & Drop ──
@@ -771,7 +729,8 @@ function setupDrop(dropId, inputId, type) {
         const file = e.dataTransfer.files[0];
         if (file && /\.csv$/i.test(file.name)) {
             const input = document.getElementById(inputId);
-            const dt = new DataTransfer(); dt.items.add(file); input.files = dt.files;
+            const dt = new DataTransfer();
+            dt.items.add(file); input.files = dt.files;
             onFileSelect(input, type);
         } else { toast('请上传 CSV 格式文件'); }
     });
@@ -867,9 +826,22 @@ function openFeishuModal() {
     if (saved.url) document.getElementById('feishuUrl').value = saved.url;
     if (saved.proxy) document.getElementById('feishuProxy').value = saved.proxy;
     if (saved.appId) document.getElementById('feishuAppId').value = saved.appId;
+    
+    // 显示上次同步时间
+    const lastSync = localStorage.getItem('feishuLastSync');
+    const btn = document.getElementById('btnSync');
+    if (lastSync) {
+        const date = new Date(parseInt(lastSync));
+        const timeStr = date.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+        btn.title = `上次同步：${timeStr}`;
+    }
+    
     document.getElementById('feishuOverlay').classList.add('show');
 }
-function closeFeishuModal() { document.getElementById('feishuOverlay').classList.remove('show'); }
+
+function closeFeishuModal() {
+    document.getElementById('feishuOverlay').classList.remove('show');
+}
 
 function parseFeishuUrl(url) {
     try {
@@ -883,18 +855,33 @@ function parseFeishuUrl(url) {
     } catch { return null; }
 }
 
+// ── Enhanced Text Extraction ──
 function extractFeishuText(val) {
     if (!val) return '';
-    if (typeof val === 'string') return val;
-    if (Array.isArray(val)) return val.map(s => s.text || s.name || '').join('');
-    if (typeof val === 'object' && val.text) return val.text;
-    return String(val);
+    if (typeof val === 'string') return val.trim();
+    if (Array.isArray(val)) {
+        return val
+            .map(item => {
+                if (typeof item === 'string') return item;
+                return item?.text || item?.name || '';
+            })
+            .filter(Boolean)
+            .join('')
+            .trim();
+    }
+    if (typeof val === 'object' && val.text) return String(val.text).trim();
+    return String(val || '').trim();
 }
 
 function extractFeishuPerson(val) {
     if (!val) return '';
-    if (typeof val === 'string') return val;
-    if (Array.isArray(val)) return val.map(p => p.name || p.id || '').join(', ');
+    if (typeof val === 'string') return val.trim();
+    if (Array.isArray(val)) {
+        return val
+            .map(p => (p.name || p.id || '').trim())
+            .filter(Boolean)
+            .join(', ');
+    }
     return '';
 }
 
@@ -910,13 +897,19 @@ async function syncFeishu() {
 
     const parsed = parseFeishuUrl(feishuUrl);
     if (!parsed || !parsed.appToken || !parsed.tableId) {
-        toast('飞书链接格式无法解析'); return;
+        toast('飞书链接格式无法解析');
+        return;
     }
 
     localStorage.setItem('feishuConfig', JSON.stringify({ url: feishuUrl, proxy: proxyUrl, appId }));
 
     const btn = document.getElementById('btnSync');
+    const uploadBtn = document.getElementById('btnUpload');
+    
+    // 禁用按钮，防止重复操作
     btn.classList.add('loading');
+    btn.disabled = true;
+    uploadBtn.disabled = true;
     btn.textContent = '同步中...';
 
     try {
@@ -929,6 +922,7 @@ async function syncFeishu() {
         if (tokenData.code !== 0 || !tokenData.tenant_access_token) {
             throw new Error(tokenData.msg || '获取 Token 失败');
         }
+
         const token = tokenData.tenant_access_token;
 
         let allRecords = [];
@@ -936,7 +930,8 @@ async function syncFeishu() {
         let hasMore = true;
 
         while (hasMore) {
-            const searchUrl = `${proxyUrl}/open-apis/bitable/v1/apps/${parsed.appToken}/tables/${parsed.tableId}/records/search` +
+            const searchUrl =
+                `${proxyUrl}/open-apis/bitable/v1/apps/${parsed.appToken}/tables/${parsed.tableId}/records/search` +
                 (pageToken ? `?page_token=${pageToken}` : '');
 
             const body = { page_size: 500 };
@@ -965,17 +960,31 @@ async function syncFeishu() {
             throw new Error('表格中没有数据');
         }
 
-        progressData = allRecords.map(rec => {
-            const f = rec.fields || {};
-            const completed = f['是否已完成'] === true;
-            return {
-                '集数': extractFeishuText(f['待办事项']) || '未命名',
-                '环节名称': extractFeishuText(f['待办事项']) || '未命名',
-                '负责人': extractFeishuPerson(f['制作人员']) || extractFeishuPerson(f['剪辑人员']) || '',
-                '状态': completed ? '已完成' : '制作中',
-                '制作组': extractFeishuText(f['项目名称']) || '未分组'
-            };
-        });
+        // ── 优化：字段映射修正 & 数据验证清理 ──
+        progressData = allRecords
+            .map(rec => {
+                const f = rec.fields || {};
+                const completed = f['是否已完成'] === true;
+                return {
+                    '集数': extractFeishuText(f['项目名称']) || '未命名',
+                    '环节名称': extractFeishuText(f['待办事项']) || '未命名',
+                    '负责人': extractFeishuPerson(f['制作人员']) || extractFeishuPerson(f['剪辑人员']) || '',
+                    '状态': completed ? '已完成' : '制作中',
+                    '制作组': extractFeishuText(f['项目名称']) || '未分组'
+                };
+            })
+            .filter(row => row['集数'] && row['环节名称'])  // 过滤无效数据
+            .sort((a, b) => a['集数'].localeCompare(b['集数']));
+
+        // ── 优化：本地缓存 ──
+        const cacheKey = 'feishuSyncData';
+        const cacheData = {
+            data: progressData,
+            timestamp: Date.now(),
+            count: allRecords.length
+        };
+        localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+        localStorage.setItem('feishuLastSync', Date.now().toString());
 
         isFeishuConnected = true;
         render();
@@ -984,8 +993,11 @@ async function syncFeishu() {
 
     } catch (err) {
         toast('同步失败: ' + err.message);
+        console.error(err);
     } finally {
         btn.classList.remove('loading');
+        btn.disabled = false;
+        uploadBtn.disabled = false;
         btn.textContent = '立即同步';
     }
 }
@@ -1004,38 +1016,60 @@ export default {
       return new Response(null, {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
           'Access-Control-Max-Age': '86400',
         },
       });
     }
 
-    const url = new URL(request.url);
-    const apiUrl = 'https://open.feishu.cn' + url.pathname + url.search;
+    try {
+      const url = new URL(request.url);
+      const apiUrl = 'https://open.feishu.cn' + url.pathname + url.search;
 
-    const headers = new Headers();
-    if (request.headers.get('Content-Type')) {
-      headers.set('Content-Type', request.headers.get('Content-Type'));
+      const fetchInit = {
+        method: request.method,
+        headers: new Headers(),
+      };
+
+      if (request.headers.get('Content-Type')) {
+        fetchInit.headers.set('Content-Type', request.headers.get('Content-Type'));
+      }
+      if (request.headers.get('Authorization')) {
+        fetchInit.headers.set('Authorization', request.headers.get('Authorization'));
+      }
+
+      if (['POST', 'PUT'].includes(request.method)) {
+        fetchInit.body = await request.text();
+      }
+
+      const response = await fetch(apiUrl, fetchInit);
+
+      const headers = new Headers(response.headers);
+      headers.delete('content-encoding');
+      
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+      headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+      headers.set('Access-Control-Expose-Headers', 'Content-Length, Content-Type');
+
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: headers,
+      });
+
+    } catch (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+      });
     }
-    if (request.headers.get('Authorization')) {
-      headers.set('Authorization', request.headers.get('Authorization'));
-    }
-
-    const response = await fetch(apiUrl, {
-      method: request.method,
-      headers: headers,
-      body: ['POST', 'PUT'].includes(request.method) ? await request.text() : undefined,
-    });
-
-    const newResponse = new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    });
-    newResponse.headers.set('Access-Control-Allow-Origin', '*');
-    newResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    return newResponse;
   },
 };
 `;
@@ -1049,9 +1083,25 @@ export default {
 }
 
 // ── Init ──
+// 尝试从缓存加载飞书数据
+const cacheKey = 'feishuSyncData';
+const cachedData = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+if (cachedData && cachedData.data && Array.isArray(cachedData.data) && cachedData.data.length > 0) {
+    progressData = cachedData.data;
+    isFeishuConnected = true;
+}
+
 render();
 setupDrop('dropProgress', 'fileProgress', 'progress');
 setupDrop('dropSalary', 'fileSalary', 'salary');
+
+// 初始化飞书按钮 Tooltip
+const lastSync = localStorage.getItem('feishuLastSync');
+if (lastSync) {
+    const date = new Date(parseInt(lastSync));
+    const timeStr = date.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('btnFeishu').title = `上次同步：${timeStr}`;
+}
 </script>
 </body>
 </html>
