@@ -650,8 +650,30 @@ function switchTab(btn) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     const view = btn.dataset.view;
-    document.getElementById('progressView').classList.toggle('view-hidden', view !== 'progress');
-    document.getElementById('costView').classList.toggle('view-hidden', view !== 'cost');
+    const isProgress = view === 'progress';
+    
+    // 隐藏/显示进度视图容器
+    document.getElementById('progressView').classList.toggle('view-hidden', !isProgress);
+    document.getElementById('progressKanban').classList.toggle('view-hidden', !isProgress);
+    document.getElementById('progressTable').classList.toggle('view-hidden', !isProgress);
+    document.getElementById('viewModeToggle').style.display = isProgress ? '' : 'none';
+    
+    // 隐藏/显示成本视图
+    document.getElementById('costView').classList.toggle('view-hidden', isProgress);
+}
+
+// ── Progress View Mode ──
+function switchProgressView(mode) {
+    document.querySelectorAll('.view-mode-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    const hideCards = mode !== 'cards';
+    const hideKanban = mode !== 'kanban';
+    const hideTable = mode !== 'table';
+    
+    document.getElementById('progressView').classList.toggle('view-hidden', hideCards);
+    document.getElementById('progressKanban').classList.toggle('view-hidden', hideKanban);
+    document.getElementById('progressTable').classList.toggle('view-hidden', hideTable);
 }
 
 // ── Modal ──
@@ -938,7 +960,7 @@ async function syncFeishu() {
         return;
     }
 
-    localStorage.setItem('feishuConfig', JSON.stringify({ url: feishuUrl, proxy: proxyUrl, appId, appSecret }));}
+    localStorage.setItem('feishuConfig', JSON.stringify({ url: feishuUrl, proxy: proxyUrl, appId, appSecret }));
 
     const btn = document.getElementById('btnSync');
     const uploadBtn = document.getElementById('btnUpload');
