@@ -907,7 +907,9 @@ function parseFeishuUrl(url) {
         const u = new URL(url);
         const pathParts = u.pathname.split('/');
         const baseIdx = pathParts.indexOf('base');
-        const appToken = baseIdx >= 0 ? pathParts[baseIdx + 1] : null;
+        const wikiIdx = pathParts.indexOf('wiki');
+        const tokenIdx = baseIdx >= 0 ? baseIdx + 1 : wikiIdx >= 0 ? wikiIdx + 1 : -1;
+        const appToken = tokenIdx >= 0 ? pathParts[tokenIdx] : null;
         const tableId = u.searchParams.get('table');
         const viewId = u.searchParams.get('view');
         return { appToken, tableId, viewId };
